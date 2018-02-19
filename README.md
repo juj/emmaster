@@ -22,7 +22,7 @@ sudo -H pip install --upgrade pip
 sudo -H pip install 'buildbot[bundle]'
 ```
 
-2. Create buildbot master:
+3. Create buildbot master:
 
 ```bash
 cd ~/emmaster/master
@@ -32,7 +32,7 @@ rm master.cfg.sample # This is a redundant template file that gets generated
 
 More information about this step can be found in http://docs.buildbot.net/latest/tutorial/firstrun.html
 
-3. Configure build master secret (and public) information (passwords and web ports):
+4. Configure build master secret (and public) information (passwords and web ports):
 
 ```bash
 cd ~/emmaster/master
@@ -40,14 +40,14 @@ cp secret.template.py secret.py
 pico secret.py
 ```
 
-4. Start master:
+5. Start master:
 
 ```bash
 cd ~/emmaster/master
 buildbot start
 ```
 
-5. Configure Amazon EC 2 firewall to accept inbound connections to the configured ports. This is done by logging in to Amazon EC2 configuration in the browser, navigating to the instance, editing its Security Group properties on Inbound panel, and specifying the inbound access rules. Three rules need to be present:
+6. Configure Amazon EC 2 firewall to accept inbound connections to the configured ports. This is done by logging in to Amazon EC2 configuration in the browser, navigating to the instance, editing its Security Group properties on Inbound panel, and specifying the inbound access rules. Three rules need to be present:
 
 a. Inbound TCP/HTTP traffic for Buildbot Web GUI access (by default port 8112 in secret.py, see variable buildmaster_web_gui_port)
 b. Inbound TCP traffic to buildbot slave listen port (by default port 9989 in secret.py, see variable buildmaster_slave_listen_port)
