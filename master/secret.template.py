@@ -25,4 +25,4 @@ buildmaster_slave_listen_port = 9989
 buildmaster_web_gui_port = 8112
 
 # The publicly visible URL of the web GUI of the build master
-buildmaster_public_url = 'http://point_this_to_the_public_url_of_the_build_master:port/'
+buildmaster_public_url = 'http://point_this_to_the_public_url_of_the_build_master:' + str(buildmaster_web_gui_port) + '/'
